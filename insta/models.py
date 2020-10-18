@@ -11,11 +11,7 @@ class Profile(models.Model):
 
 
     def save_profile(self):
-        self.save()
-# class Comments(models.Model):
-#     comment = models.CharField(max_length = 500)
-#     user = models.ForeignKey()
-
+        self.sav
 
 
 
