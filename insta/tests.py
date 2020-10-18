@@ -17,8 +17,12 @@ class ProfileTestClass(TestCase):
         self.assertTrue(isinstance(self.Peris, Profile))
 
     def test_save_method(self):
-        self.Peris.name()
+        self.Peris.save_profile()
         name = Profile.objects.all()
+
+    def test_delete_method(self):
+        self.Peris.save_profile()
+        self.Peris.delete_profile.all()
 
         
 

@@ -6,5 +6,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('insta.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('logout/', views.logout_view,{"next_page":'/'}),
+    path('tinymce/', include('tinymce.urls')),
 ]

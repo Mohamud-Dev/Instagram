@@ -7,6 +7,6 @@ from django.conf import settings
 urlpatterns=[
     path('',views.home,name = 'home'),
     path('accounts/register/', views.register, name='register'),
-    # path('accounts/logout/', views.logout_view, name='logout')
+    
 
 ]
