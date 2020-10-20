@@ -7,7 +7,7 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
       {% if form.errors %}
-        <p> Password or Username is incorrect </p>
+      <p> Password or Username is incorrect </p>
       {% endif %}
 
       <br>
@@ -18,7 +18,7 @@
         </div>
         <div class="container">
 
-          <form  action="/accounts/login/" method="post">
+          <form action="/accounts/login/" method="post">
             {% csrf_token %}
             {% bootstrap_form form%}
 
@@ -26,15 +26,22 @@
               <input type="submit" class="btn btn-primary btn-sm" value="Login">
 
             </div>
-            <p>you dont have an account? <a href="/accounts/register"> Sign Up</a></p>
-
-            <input type="hidden" name="next" value="{{next}}">
-
-          </form>
-
         </div>
-
       </div>
+      <!-- <div style="padding-top: 10px;"> -->
+     
+      <div class="container card " width="50px" style="margin-top: 20px;">
+        <br>
+        <p>you dont have an account? <a href="/accounts/register"> Sign Up</a></p>
+      </div>
+    </div>
+
+      <input type="hidden" name="next" value="{{next}}">
+
+      </form>
+
+
+
 
     </div>
     <!-- <div class="card" style="width: 18rem;">
@@ -46,7 +53,7 @@
     </div> -->
     <!-- empty div -->
     <div class="col-md-4"></div>
-    
+
   </div>
 </div>
 
