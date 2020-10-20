@@ -3,33 +3,20 @@
 {{ block.super}}
 <div>
   <h1>Instagram</h1>
-  <!-- <img src="https://ucarecdn.com/f0e65890-b403-4316-8068-d1dd58c8f80f/instagram.png" alt="kufa tu"> -->
-  <!-- <img src="https://image.shutterstock.com/image-photo/funny-dog-profile-pink-wig-260nw-1165071694.jpg" alt=""> -->
-  <!-- <img src="/images/img_FvDWfH4.jpeg" width="50%" alt="ppp"> -->
+  
   <div class="container">
     {%for new_post in posts %}
     <div class="row">
       <div class="col-md-8">
-        <h3>{{new_post.title}}</h3>
-        <img src="{{new_post.image.url}}" class="img-responsive" alt="image1" width="300px">
+        <img width="50px" height="50px" style="border-radius: 50%;" class="img img-circle" src="{{new_post.avatar}}" alt="{{new_post.author}}" srcset="">
+        {{new_post.author}}
+        <h3>{{new_post.name}}</h3>
+        <img src="{{new_post.image}}" class="img-responsive" alt="image1" width="300px">
         <p>{{new_post.caption}}</p>
       </div>
     </div>
     {% endfor %}
-    <!-- 
-   <div class="row">
-     <h1 class="text-center">{{new_post.title}}</h1>
-   </div>
-
-   <div class="row">
-     {% autoescape on %}
-     {{new_post.post| safe}}
-    {% endautoescape %}
-
-   </div>
-
-   <div class="row">
-   </div> -->
+    
 
   </div>
 </div>
