@@ -29,8 +29,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True)
     # profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default='')
     caption = models.TextField(max_length=300)
-    # post = HTMLField()
-    likes = models.IntegerField(default=0)
+    likes = models.IntegerField(User)
     @classmethod
     def all_posts(cls) :
         posts = cls.objects.all()
