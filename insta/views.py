@@ -16,13 +16,17 @@ def home(request):
 
         # import pdb; pdb.set_trace()
         pic = Profile.objects.filter(user=post.user.id).first()
-        pic = pic.profile_pic.url
+        if pic:
+            pic = pic.profile_pic.url
+        else:
+            pic =''
         obj = dict(
             image=post.image.url,
             author=post.user.username,
             avatar=pic,
             name=post.title,
             caption=post.caption
+            # likes = post.likes
 
         )
         json_posts.append(obj)
@@ -32,19 +36,43 @@ def home(request):
 def profile(request):
     if request.method == 'POST':
 
-        user_form = UserUpdateForm(request.POST, instance=request.user)
+        # user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(
-            request.POST, request.FILES, instance=request.user.profile)
+            request.POST, request.FILES, instance=request.user)
 
-        if user_form.is_valid() and profile_form.is_valid():
+        if  profile_form.is_valid():
+            # user_form.save()
+            profile_form.save()
+
+            return redirect('home')
+
+    else:
+        
+        profile_form = ProfileUpdateForm(instance=request.user)
+
+        context = {
+            
+            'profile_form': profile_form
+
+        }
+
+    return render(request, 'profile.html', context)
+
+def update_profile(request):
+    if request.method == 'POST':
+
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
+
+        if user_form.is_valid():
             user_form.save()
             profile_form.save()
 
-            return redirect('profile')
+            return redirect('home')
 
     else:
         user_form = UserUpdateForm(instance=request.user)
-        profile_form = ProfileUpdateForm(instance=request.user.profile)
+        profile_form = ProfileUpdateForm(instance=request.user)
 
         context = {
             'user_form': user_form,
@@ -52,7 +80,8 @@ def profile(request):
 
         }
 
-    return render(request, 'profile.html', context)
+    return render(request, 'update_profile.html', context)
+
 
 
 def register(request):
@@ -86,3 +115,15 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {"form": form})
+
+
+# def likes(request):
+#     postLike_id = None
+#     if requst.method == "GET":
+#         postLike = Post.objects.get(id = int(postLike_id))
+#         if postLike:
+#             likes = postLike.likes + 1
+#             postLike.likes = likes
+#             postLike.save()
+#     return HttpResponse(likes)
+        
