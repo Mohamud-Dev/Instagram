@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {%block content%}
 {{ block.super}}
+
 <div>
   <div class="container" style="margin-top: 100px;">
     {%for new_post in posts %}
@@ -25,26 +26,29 @@
             <h3>{{new_post.name}}</h3>
             <p> <b>{{new_post.author}} </b>{{new_post.caption}}</p>
           </div>
-          <div class="card-footer">
+
+          <!-- <div class="card-footer">
             <a class="like"><i class="fa fa-thumbs-o-up"></i>
               Like <input class="qty1" name="qty1" readonly="readonly" type="text" value="0" />
             </a>
             <a class="dislike"><i class="fa fa-thumbs-o-down"></i>
               Dislike <input class="qty2" name="qty2" readonly="readonly" type="text" value="0" />
-            </a>
-            <!-- <i onclick="myFunction(this)" class="fa fa-thumbs-up fa-2x liking"></i> -->
+            </a> -->
 
-            <!-- <button class="btn" onclick="like()"><span id="heart" ><i class="far fa-heart"><p id="thisone"></p></i></span></button>  -->
+          <div class="card-footer">
+         <a href=""> <span class="info""><i class="far fa-heart fa-1x" ></i></span>  </a>
+       <a href=""><i class="far fa-comment"></i></a>  
 
-            <!-- <a href=""><i class="far fa-paper-plane"></i></a> -->
+            <a href=""><i class="far fa-paper-plane"></i></a>
+
           </div>
         </div>
       </div>
-    </div>
-
-    </script>
-    {% endfor %}
+    </div><br><br>
   </div>
+
+  {% endfor %}
+</div>
 </div>
 
 

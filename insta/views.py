@@ -105,20 +105,27 @@ def register(request):
 
 def new_post(request):
     current_user = request.user
-    # current_profile = Profile.objects.get(user=request.user)
+   
     if request.method == 'POST':
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.save(commit=False)
             image.user = current_user
-            # image.profile = current_profile
+           
             image.save()
-            # print(current_profile)
+            
         return redirect('home')
 
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {"form": form})
+
+
+
+
+
+
+
 
 
 # def likes(request):

@@ -17,8 +17,7 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
-    # def __str__(self):
-    #     return self.name
+   
     def __str__(self):
         return f'{self.user.username} Profile'
 
@@ -26,10 +25,10 @@ class Profile(models.Model):
 class Post(models.Model):
     image = models.ImageField(upload_to='new_post/', blank=True ,default = 'default.jpg')
     title = models.CharField(max_length=30, default='')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True)
-    # profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default='')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True ,related_name='author')
     caption = models.TextField(max_length=300)
-    likes = models.IntegerField(User)
+    # likes = models.IntegerField(User, default=None, blank =True)
+
     @classmethod
     def all_posts(cls) :
         posts = cls.objects.all()
@@ -37,3 +36,25 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def num_likes(self):
+        return self.liked.all.count()
+
+
+
+LIKE_CHOICES =(
+    ('Like','Like'),
+    ('Unlike','Unlike'),
+)
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    value = models.CharField(choices=LIKE_CHOICES , default='Likes',max_length=10)
+    
+    def __str__(self):
+        return str(self.post)
+
+
+ 
