@@ -14,7 +14,7 @@ class Profile(models.Model):
     def save_profile(self):
         self.save
 
-    def delete_profile(self):
+    def delete_user(self):
         self.delete()
 
     
@@ -39,7 +39,7 @@ class Post(models.Model):
         posts = cls.objects.all()
         return posts
 
-     def save_post(self):
+    def save_post(self):
         self.save()
 
     def delete_post(self):
