@@ -3,7 +3,7 @@
 #### Author: [Peris Oduol](https://github.com/PerisOduol618)
 
 
-* Link to live site: [Instagram](https://perisgallery.herokuapp.com/)
+* Link to live site: [Instagram](https://oduolinstagram.herokuapp.com/)
 
 ## Description
 The application allows users to sign up, upload pictures,view other user's pictures,like them, comment on them and also follow the other users.
